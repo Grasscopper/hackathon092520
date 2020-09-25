@@ -11,3 +11,35 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.grid-container {
+  margin-top: 30px;
+  background-color: #9BC1BC;
+  padding: 10px;
+  border: solid;
+  border-color: black;
+}
+
+h1 {
+  /* color: white; */
+  font-weight: bold;
+}
+
+label {
+  /* color: white; */
+  font-size: 32px;
+}
+
+/* Account Title Input Field */
+#title {
+  width: 20%;
+}
+
+button {
+  background-color: #98DFEA;
+  padding: 10px;
+  /* color: white; */
+  font-weight: bold;
+  border: solid;
+  border-color: black;
+}
