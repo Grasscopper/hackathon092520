@@ -8,6 +8,7 @@ const AppContainer = (props) => {
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Expenses} />
+        <Route exact path="/hackathon092520" component={Expenses} />
       </Switch>
     </BrowserRouter>
   )
