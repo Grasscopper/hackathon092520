@@ -21,12 +21,19 @@ code {
 }
 
 h1 {
-  /* color: white; */
   font-weight: bold;
 }
 
+h3 {
+  margin-top: 10px;
+  font-size: 32px;
+}
+
+li {
+  font-size: 20px;
+}
+
 label {
-  /* color: white; */
   font-size: 32px;
 }
 
@@ -38,7 +45,6 @@ label {
 button {
   background-color: #98DFEA;
   padding: 10px;
-  /* color: white; */
   font-weight: bold;
   border: solid;
   border-color: black;
