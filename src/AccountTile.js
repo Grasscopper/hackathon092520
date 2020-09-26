@@ -1,8 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const AccountTile = (props) => {
   return (
-    <li>{props.account.title}</li>
+    <Link to={`/accounts/${props.account.id}`}>
+      <li>{props.account.title}</li>
+    </Link>
   )
 }
 
