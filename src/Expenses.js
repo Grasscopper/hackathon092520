@@ -5,11 +5,20 @@ import AccountTile from './AccountTile'
 const Expenses = (props) => {
   let [accounts, setAccounts] = useState([])
   let [account, setAccount] = useState({
+    id: 0,
     title: ""
   })
 
   useEffect(() => {
     let storage = window.localStorage
+    let currentIdString = storage.getItem("accountId")
+    if (currentIdString != null) {
+      let currentIdInteger = parseInt(currentIdString)
+      setAccount({
+        id: currentIdInteger,
+        title: account.title
+      })
+    }
     let storedAccounts = storage.getItem("accounts") //JSON string
     if (storedAccounts != null) {
       setAccounts(JSON.parse(storedAccounts))
@@ -28,6 +37,7 @@ const Expenses = (props) => {
     event.preventDefault()
     let storage = window.localStorage
     let storedAccounts = storage.getItem("accounts") //JSON string
+
     if (storedAccounts != null) {
       let accountsArray = JSON.parse(storedAccounts) //JSON to array
       accountsArray.push(account) //push new account on array
@@ -40,22 +50,39 @@ const Expenses = (props) => {
       let accountsString = JSON.stringify(accountsArray)
       storage.setItem("accounts", accountsString)
     }
+
     setAccounts([
       ...accounts,
       account
     ])
-    clearAccountForm()
+    handleAccountForm()
   }
 
-  const clearAccountForm = () => {
-    setAccount({
-      title: ""
-    })
+  const handleAccountForm = () => {
+    let storage = window.localStorage
+    let currentIdString = storage.getItem("accountId")
+
+    if (currentIdString != null) {
+      let currentIdInteger = parseInt(currentIdString)
+      currentIdInteger += 1
+      storage.setItem("accountId", currentIdInteger)
+      setAccount({
+        id: currentIdInteger,
+        title: ""
+      })
+    }
+    else {
+      storage.setItem("accountId", 1)
+      setAccount({
+        id: 1,
+        title: ""
+      })
+    }
   }
 
   let accountTiles = accounts.map((account) => {
     return (
-      <AccountTile account={account} />
+      <AccountTile key={account.id} account={account} />
     )
   })
 
